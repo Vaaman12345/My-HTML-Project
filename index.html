@@ -17,7 +17,7 @@
         <h5 style="font-size: 60px;" id="snow_counter">Snow: 0</h5>
         <h5 style="font-size: 60px;" id="water_counter">Water: 0</h5>
         <h5 style="font-size: 60px;" id="copper_counter">Copper: 0</h5>
-        <h5 style="font-size: 60px;" id="silver_counter">Silver: 0</h5>
+        <h5 style="font-size: 60px;" id="iron_counter">Iron: 0</h5>
         <h5 style="font-size: 60px;" id="gold_counter">Gold: 0</h5>
         <h5 style="font-size: 60px;" id="leaf_counter">Leafs: 0</h5>
         <h5 style="font-size: 60px;" id="wood_counter">Wood: 0</h5>
@@ -85,12 +85,16 @@
         <button style="background-image:linear-gradient(to right, #573d11, #5b2900);" onclick="fill_furnace()">Fill Furnace</button>
         <p id="wood_fuel_counter">Wood Fuel: 0</p>
         <button style="background-image:linear-gradient(to right, #00bfff, #0000ff);" onclick="use_furnace()">Use Furnace</button>
-        <button style="background-image:linear-gradient(to right, #ff0000, #ff0000);" onclick="closestructuresbtn()">Close</button>
-    </div>
-    
-    <div class="overlay" id="furnace_use">
-        <h2>Click On What You Want To Smelt</h2>
-        <button onclick="smeltcopper()">Smelt Copper</button>
+        <br>
+        <br>
+        <button id="smelt_copper" class="smelt-btn" style="background-image:linear-gradient(to right, rgb(162, 111, 0), rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_copper()">Smelt Copper</button>
+        <br>
+        <button id="smelt_gold" class="smelt-btn" style="background-image:linear-gradient(to right, gold, rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_gold()">Smelt Gold</button>
+        <br>
+        <button id="smelt_iron" class="smelt-btn" style="background-image:linear-gradient(to right, rgb(196, 190, 190), rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_iron()">Smelt Iron</button>
+        <br>
+        <br>
+        <button onclick="closestructuresbtn()">Close</button>
     </div>
 
 
@@ -164,7 +168,7 @@
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 4px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 4px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 4px;"></button>
-        <button class="stone-rock" onclick="silver()" style="width:35px; height:10px; background-color: rgb(205, 205, 205);margin: 4px;"></button>
+        <button class="stone-rock" onclick="iron()" style="width:35px; height:10px; background-color: rgb(205, 205, 205);margin: 4px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 4px;"></button>
     </div>
 

@@ -38,9 +38,14 @@
     var water_gathered = 0;
     var copper_gathered = 0;
     var gold_gathered = 0;
-    var silver_gathered = 0;
+    var iron_gathered = 0;
     var wood_gathered = 0;
     var leaf_gathered = 0;
+
+
+    var smelted_copper = 0;
+    var smelted_gold = 0;
+    var smelted_iron = 0;
 
 
     var pickaxe_built = 0;
@@ -123,9 +128,9 @@ function stone() {
             alert("How did you do this without a shovel, HOW?");
         }
     }
-    function silver() {
-        silver_gathered++;
-        document.getElementById("silver_counter").innerText = "Silver: " + silver_gathered;
+    function iron() {
+        iron_gathered++;
+        document.getElementById("iron_counter").innerText = "Iron: " + iron_gathered;
     }
 
 
@@ -270,10 +275,25 @@ document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fu
     }
 
     function use_furnace() {
-        if(wood_fuel <= 0){
-            alert("You do not have enough fuel to do this action.");
-        }else{
-            wood_fuel -= 1;
             document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+            document.getElementById("smelt_copper").style.visibility = "visible";
+            document.getElementById("smelt_gold").style.visibility = "visible";
+            document.getElementById("smelt_iron").style.visibility = "visible";
         }
-    }
+
+        function smelt_copper() {
+            wood_fuel--;
+            document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+            smelted_copper++;
+        }
+function smelt_gold() {
+    wood_fuel--;
+    document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+    smelted_gold++;
+}
+
+function smelt_iron() {
+    wood_fuel--;
+    document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+    smelted_iron++;
+}
