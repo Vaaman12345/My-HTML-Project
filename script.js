@@ -241,10 +241,14 @@ function createItem() {
     function openstructures() {
         document.getElementById("overlay4").style.display = "block";
     }
+    function closestructuresbtn() {
+        document.getElementById("overlay4").style.display = "none";
+        document.getElementById("overlay3").style.display = "none";
+        document.getElementById("overlay2").style.display = "none";
+        document.getElementById("overlay1").style.display = "none";
 
-___________________________________________________________
-var wood_fuel = 0;
-
+    }
+// LIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIINNEEEEEEEEEEEEEEEEEE
 
 
 
@@ -253,13 +257,14 @@ var wood_fuel = 0;
             document.getElementById("furnace_div").style.display = "block";
         }
     }
-
+var wood_fuel = 0;
+document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
     function fill_furnace() {
-        if(wood_gathered <= 1){
+        if(wood_gathered < 2){
             alert("You do not have enough materials to do this action.");
         }else{
             wood_gathered -= 2;
-            wood_fuel += 2;
+            wood_fuel++;
             document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
         }
     }

@@ -43,7 +43,7 @@
         <button id="axe" onclick="axe()">Axe</button>
         <br>
         <br>
-        <button id="furnace" onclick="furnace()">Furnace</button>
+        <button style="background-image:linear-gradient(to top left, #ff0800, #ff6a00);" id="furnace" onclick="furnace()">Furnace</button>
         <br>
         <br>
         <button id="closecraftBtn">Close</button>
@@ -76,15 +76,16 @@
         <button style="visibility: hidden; background-color:rgb(234, 74, 0);" id="furnace_btn" onclick="openfurnace()">Furnace</button>
         <br>
         <br>
-        <button id="closeitemBtn" onclick="closeitembtn()">Close</button>
+        <button onclick="closestructuresbtn()">Close</button>
         </div>
     </div>
 <!--BIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIG LIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIINEEEEEE-->
     <div class="overlay" id="furnace_div">
         <h2>Furnace</h2>
-        <button onclick="fill_furnace()">Fill Furnace</button>
+        <button style="background-image:linear-gradient(to right, #573d11, #5b2900);" onclick="fill_furnace()">Fill Furnace</button>
         <p id="wood_fuel_counter">Wood Fuel: 0</p>
-        <button style="background-color:rgb(255, 106, 0);" onclick="use_furnace()">Use Furnace</button>
+        <button style="background-image:linear-gradient(to right, #00bfff, #0000ff);" onclick="use_furnace()">Use Furnace</button>
+        <button style="background-image:linear-gradient(to right, #ff0000, #ff0000);" onclick="closestructuresbtn()">Close</button>
     </div>
     
     <div class="overlay" id="furnace_use">
