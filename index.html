@@ -5,25 +5,50 @@
     </head>
 
 <body>
+    <div id="everything">
+        <div id="everything2">
     <button id="openBtn" style="background-color:rgb(68, 255, 0); font-family: Courier New; font-weight: bold; font-size: 16px;">Open Resource List</button>
     
 <div class="overlay" id="overlay1">
-    <div class="overlay-content">
-        <h2 style="font-size: 60px;">Resources Gathered (Scroll)</h2>
-        <h5 style="font-size: 60px;" id="grass_counter">Grass: 0</h5>
-        <h5 style="font-size: 60px;" id="soil_counter">Dirt: 0</h5>
-        <h5 style="font-size: 60px;" id="clay_counter">Clay: 0</h5>
-        <h5 style="font-size: 60px;" id="stone_counter">Stone: 0</h5>
-        <h5 style="font-size: 60px;" id="snow_counter">Snow: 0</h5>
-        <h5 style="font-size: 60px;" id="water_counter">Water: 0</h5>
-        <h5 style="font-size: 60px;" id="copper_counter">Copper: 0</h5>
-        <h5 style="font-size: 60px;" id="iron_counter">Iron: 0</h5>
-        <h5 style="font-size: 60px;" id="gold_counter">Gold: 0</h5>
-        <h5 style="font-size: 60px;" id="leaf_counter">Leafs: 0</h5>
-        <h5 style="font-size: 60px;" id="wood_counter">Wood: 0</h5>
-    </div>
-
+    <button id="natural" onclick="opennatural()"style="background-image:linear-gradient(to right, green, blue); color: white;">Natural Items</button>
+    <br>
+    <br>
+    <button id="smelted_items" onclick="open_smelted()" style="background-image:linear-gradient(to right, rgb(204, 13, 13), rgb(255, 94, 0)); color: white;">Smelted Items</button>
+    <br>
+    <br>
     <button id="closeBtn">Close</button>
+    </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="overlay" id="smelted_items_div">
+    <div class="overlay-content">
+    <h2 style="font-size: 60px;">Smelted Items</h2>
+    <h5 style="font-size: 60px;" id="smelted-copper">Smelted Copper: 0</h5>
+    <h5 style="font-size: 60px;" id="smelted-iron">Smelted Iron: 0</h5>
+    <h5 style="font-size: 60px;" id="smelted-gold">Smelted Gold: 0</h5>
+    <h5 style="font-size: 60px;" id="smelted-gravel">Smelted Gravel: 0</h5>
+    </div>
+    <button id="close_smelted" onclick="close_smelted()">Close</button>
+</div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="overlay" id="natural_div">
+    <div class="overlay-content">
+    <h2 style="font-size: 60px;">Resources Gathered (Scroll)</h2>
+    <h5 style="font-size: 60px;" id="grass_counter">Grass: 0</h5>
+    <h5 style="font-size: 60px;" id="soil_counter">Dirt: 0</h5>
+    <h5 style="font-size: 60px;" id="clay_counter">Clay: 0</h5>
+    <h5 style="font-size: 60px;" id="stone_counter">Stone: 0</h5>
+    <h5 style="font-size: 60px;" id="snow_counter">Snow: 0</h5>
+    <h5 style="font-size: 60px;" id="water_counter">Water: 0</h5>
+    <h5 style="font-size: 60px;" id="copper_counter">Copper: 0</h5>
+    <h5 style="font-size: 60px;" id="iron_counter">Iron: 0</h5>
+    <h5 style="font-size: 60px;" id="gold_counter">Gold: 0</h5>
+    <h5 style="font-size: 60px;" id="leaf_counter">Leafs: 0</h5>
+    <h5 style="font-size: 60px;" id="wood_counter">Wood: 0</h5>
+    <h5 style="font-size: 60px;" id="gravel_counter">Gravel: 0</h5>
+    <h5 style="font-size: 60px;" id="magnet_counter">Magnets: 0</h5>
+    </div>
+    <button id="close_natural" onclick="closenatural()">Close</button>
 </div>
 
 
@@ -34,18 +59,24 @@
         <h2>Build Menu</h2>
         <p>Select an item to build:</p>
 
-        <button id="pickaxe" onclick="pickaxe()">Pickaxe</button>
-        <br>
-        <br>
-        <button id="shovel" onclick="shovel()">Shovel</button>
-        <br>
-        <br>
-        <button id="axe" onclick="axe()">Axe</button>
-        <br>
-        <br>
-        <button style="background-image:linear-gradient(to top left, #ff0800, #ff6a00);" id="furnace" onclick="furnace()">Furnace</button>
-        <br>
-        <br>
+        <button style="background-image:linear-gradient(to right, #5D2906, #ffffff, #ffffff, #5D2906); font-family: Courier New; font-weight: bold; font-size: 16px;" id="pickaxe" onclick="pickaxe()">Pickaxe</button>
+        <br class="spacer1">
+        <br class="spacer1">
+        <button style="background-image:linear-gradient(to right, #5D2906, #ffffff, #ffffff, #5D2906 ); font-family: Courier New; font-weight: bold; font-size: 16px;" id="shovel" onclick="shovel()">Shovel</button>
+        <br class="spacer2">
+        <br class="spacer2">
+        <button style="background-image:linear-gradient(to right, #5D2906, #ffffff, #ffffff, #5D2906); font-family: Courier New; font-weight: bold; font-size: 16px;" id="axe" onclick="axe()">Axe</button>
+        <br class="spacer3">
+        <br class="spacer3">
+        <button style="background-image:linear-gradient(to top left, #ff0800, #ff6a00, #fbff00);" id="furnace" onclick="furnace()">Furnace</button>
+        <br class="spacer4">
+        <br class="spacer4">
+        <button style="font-family: Courier New; font-weight: bold; font-size: 16px; background: linear-gradient(to right, transparent, #ffffff59, #ffffff, #01b2da); backdrop-filter: blur(10px);" id="glass" onclick="glass()">Glass</button>
+        <br class="spacer5">
+        <br class="spacer5">
+        <button style="visibility:hidden; color: white; background-image:radial-gradient(circle, #fff200, #1e214d, rgb(0, 0, 0));" id="light1" onclick="light_bulb()">Light Bulb</button>
+        <br class="spacer6">
+        <br class="spacer6">
         <button id="closecraftBtn">Close</button>
     </div>
 
@@ -76,6 +107,10 @@
         <button style="visibility: hidden; background-color:rgb(234, 74, 0);" id="furnace_btn" onclick="openfurnace()">Furnace</button>
         <br>
         <br>
+        <button style="visibility: hidden; background-image:linear-gradient(to right, #ffffff59, #ffffff, #01b2da);" id="light1_btn" onclick="light1()">Light Bulb</button>
+
+        <br>
+        <br>
         <button onclick="closestructuresbtn()">Close</button>
         </div>
     </div>
@@ -92,10 +127,20 @@
         <button id="smelt_gold" class="smelt-btn" style="background-image:linear-gradient(to right, gold, rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_gold()">Smelt Gold</button>
         <br>
         <button id="smelt_iron" class="smelt-btn" style="background-image:linear-gradient(to right, rgb(196, 190, 190), rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_iron()">Smelt Iron</button>
+        <button id="smelt_gravel" class="smelt-btn" style="background-image:linear-gradient(to right, rgb(40, 40, 40), rgb(255, 94, 0)); visibility: hidden;" onclick="smelt_gravel()">Smelt Gravel</button>
         <br>
         <br>
-        <button onclick="closestructuresbtn()">Close</button>
+        <button onclick="closefurnace2()">Close</button>
     </div>
+
+    <div class="overlay" id="light1_div">
+        <h2>Light Bulb</h2>
+        <p>Light Bulbs are used to light up your world. They require a power source to work.</p>
+        <br>
+        <br>
+        <button onclick="closelight1()">Close</button>
+        </div>
+
 
 
 
@@ -109,6 +154,15 @@
 
     <script src="script.js"></script>
     <h1 id="talk"style="font-size: 29px">Click on the wood (light brown) then the stone (gray) then make a pickaxe.</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -174,7 +228,7 @@
 
     <div style="margin-left: 555px; display:flex;">
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey; margin: 3.5px;"></button>
-        <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 3.5px;"></button>
+        <button onclick="gravel()" class="stone-rock" style="width:35px; height:10px; background-color: rgb(40, 40, 40);margin: 3.5px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 3.5px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 3.5px;"></button>
         <button onclick="stone()" class="stone-rock" style="width:35px; height:10px; background-color: grey;margin: 3.5px;"></button>
@@ -365,7 +419,8 @@
     <button onclick="water()" style="width:35px; height:10px; background-color: rgb(0, 157, 255)"></button>
     <button onclick="water()" style="width:35px; height:10px; background-color: rgb(0, 157, 255)"></button>
     <button onclick="water()" style="width:20px; height:10px; background-color: rgb(0, 157, 255)"></button>
-
+    </div>
+</div>
 
 </body>
 

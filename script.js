@@ -15,17 +15,17 @@
     }
 
     if(pickaxe_built >= 1) {
-        document.getElementById("pickaxe").style.visibility = "hidden";
+        document.getElementById("pickaxe").remove();
         document.getElementById("talk").innerHTML = "";
     }
 
     if(shovel_built >= 1) {
-        document.getElementById("shovel").style.visibility = "hidden";
+        document.getElementById("shovel").remove();
         document.getElementsByClassName("dirt").style.visibility = "visible";
     }
 
     if(furnace_built >= 1) {
-        document.getElementById("furnace").style.visibility = "hidden";
+        document.getElementById("furnace").remove();
         document.getElementById("furnace_btn").style.visibility = "visible";
     }
 
@@ -41,22 +41,47 @@
     var iron_gathered = 0;
     var wood_gathered = 0;
     var leaf_gathered = 0;
+    var gravel_gathered = 0;
+    var magnet_gathered = 0;
 
 
     var smelted_copper = 0;
     var smelted_gold = 0;
     var smelted_iron = 0;
+    var smelted_gravel = 0;
 
 
     var pickaxe_built = 0;
     var shovel_built = 0;
     var axe_built = 0;
     var furnace_built = 0;
+    var glass_built = 0;
 
 
+    var thunderstorm = false;
+    
 
 
+    function opennatural() {
+        document.getElementById("natural_div").style.display = "block";
+    }
+    function closenatural() {
+        document.getElementById("natural_div").style.display = "none";
+        document.getElementById("overlay1").style.display = "none";
+    }
+    function open_smelted() {
+        document.getElementById("smelted_items_div").style.display = "block";
+    }
+    function close_smelted() {
+        document.getElementById("smelted_items_div").style.display = "none";
+        document.getElementById("overlay1").style.display = "none";
+    }
 
+
+    function gravel() {
+        gravel_gathered++;
+        document.getElementById("gravel_counter").innerText = "Gravel: " + gravel_gathered;
+    }
     function leaf() {
         leaf_gathered++;
         document.getElementById("leaf_counter").innerText = "Leaf: " + leaf_gathered;
@@ -125,12 +150,19 @@ function stone() {
                 document.getElementById("soil_counter").innerText = "Dirt: " + soil_gathered;
             }
         } else {
-            alert("How did you do this without a shovel, HOW?");
+            alert("How are you doing this without a shovel, HOW?");
         }
     }
     function iron() {
+        if (thunderstorm === false) {
         iron_gathered++;
         document.getElementById("iron_counter").innerText = "Iron: " + iron_gathered;
+        } else {
+            if (Math.random() < 0.25) {
+                magnet_gathered++;
+                document.getElementById("magnet_counter").innerText = "Magnet: " + magnet_gathered;
+            }
+        }
     }
 
 
@@ -164,6 +196,27 @@ function stone() {
         document.getElementById("item_description").innerText = "You will be able to smelt things down by using wood.";
         document.getElementById("item_requirements").innerText = "Requirements: 5 clay + 2 stone";
     }
+    function glass() {
+        document.getElementById("overlay3").style.display = "block";
+        document.getElementById("item_name").innerText = "Glass";
+        document.getElementById("item_description").innerText = "You can use this to make windows and other transparent items.";
+        document.getElementById("item_requirements").innerText = "Requirements: 10 smelted gravel + 5 water + 1 iron";
+    }
+
+    function light_bulb() {
+        document.getElementById("overlay3").style.display = "block";
+        document.getElementById("item_name").innerText = "Light Source 1: Small Light Bulb";
+        document.getElementById("item_description").innerText = "This light source will be the first step to lighting up your world. It will be a small light source that will light up a small area but enough to see. You'll need a lot of materials.";
+        document.getElementById("item_requirements").innerText = "Requirements: 15 smelted copper + 2 leaves + 2 grass + 5 smelted iron + 2 water + 10 wood + 10 stone + 2 magnets????";
+        document.getElementById("talk").innerText = "You are going to need *lightning* you can try waiting around for a thunderstorm ";
+
+        setTimeout(function () {
+            document.getElementById("everything").style.background = "linear-gradient(to top, #040407, #040510, #000000, #64646494)";
+            document.getElementById("talk").innerText = "Now you have to start collecting iron (Silver) to get lightning and the iron you need to make the light source.";
+            thunderstorm = true;
+        }, 15000);
+
+    }
 
 
 
@@ -173,7 +226,8 @@ function createItem() {
             wood_gathered -= 2;
             stone_gathered -= 1;
             pickaxe_built += 1;
-                document.getElementById("pickaxe").style.visibility = "hidden";
+                document.getElementById("pickaxe").remove();
+                document.getElementsByClassName("spacer1")[0].remove();
             document.getElementById("wood_counter").innerText = "Wood: " + wood_gathered;
             document.getElementById("stone_counter").innerText = "Stone: " + stone_gathered;
 
@@ -193,7 +247,8 @@ function createItem() {
             stone_gathered -= 1;
             shovel_built += 1;
 
-            document.getElementById("shovel").style.visibility = "hidden";
+            document.getElementById("shovel").remove();
+            document.getElementsByClassName("spacer2")[0].remove();
             document.getElementById("wood_counter").innerText = "Wood: " + wood_gathered;
             document.getElementById("stone_counter").innerText = "Stone: " + stone_gathered;
 
@@ -211,7 +266,8 @@ function createItem() {
             stone_gathered -= 2;
             axe_built += 1;
 
-            document.getElementById("axe").style.visibility = "hidden";
+            document.getElementById("axe").remove();
+            document.getElementsByClassName("spacer3")[0].remove();
             document.getElementById("wood_counter").innerText = "Wood: " + wood_gathered;
             document.getElementById("stone_counter").innerText = "Stone: " + stone_gathered;
         } else {
@@ -225,12 +281,33 @@ function createItem() {
 
             document.getElementById("clay_counter").innerText = "Clay: " + clay_gathered;
             document.getElementById("stone_counter").innerText = "Stone: " + stone_gathered;
-            document.getElementById("furnace").style.visibility = "hidden";
+            document.getElementById("furnace").remove();
+            document.getElementsByClassName("spacer4")[0].remove();
             document.getElementById("furnace_btn").style.visibility = "visible";
 
         } else {
             alert("You don't have enough resources to craft this item.");
         }
+    } else if (document.getElementById("item_name").innerText === "Glass") {
+        if (smelted_gravel >= 10 && water_gathered >= 5 && iron_gathered >= 1) {
+
+            smelted_gravel -= 10;
+            water_gathered -= 5;
+            iron_gathered -= 1;
+            glass_built += 1;
+
+            const glassBtn = document.getElementById("glass");
+            if (glassBtn) glassBtn.remove();
+
+            const spacer = document.getElementsByClassName("spacer5")[0];
+            if (spacer) spacer.remove();
+            document.getElementById("light1_btn").innerText = "Light Bulb";
+        } else {
+            alert("You don't have enough resources to craft this item.");
+        }
+    } else if (document.getElementById("item_name").innerText === "Light Source 1: Small Light Bulb") {
+
+        document.getElementById("light1_btn").style.visibility = "visible";
     }
 
 
@@ -253,6 +330,7 @@ function createItem() {
         document.getElementById("overlay1").style.display = "none";
 
     }
+
 // LIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIINNEEEEEEEEEEEEEEEEEE
 
 
@@ -279,21 +357,487 @@ document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fu
             document.getElementById("smelt_copper").style.visibility = "visible";
             document.getElementById("smelt_gold").style.visibility = "visible";
             document.getElementById("smelt_iron").style.visibility = "visible";
+            document.getElementById("smelt_gravel").style.visibility = "visible";
         }
 
         function smelt_copper() {
-            wood_fuel--;
-            document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
-            smelted_copper++;
-        }
+            if (copper_gathered >= 1 && wood_fuel >= 1) {
+                copper_gathered--;
+                wood_fuel--;
+                document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+                smelted_copper++;
+                document.getElementById("smelted-copper").innerText = "Smelted Copper: " + smelted_copper;
+                document.getElementById("talk").innerText = "You better start making a light source since it's going to get dark soon.";
+                setTimeout(function() {
+                    document.getElementById("talk").innerText = "You can find the light source in the BUILD menu.";
+                }, 5000);
+                document.getElementById("light1").style.visibility = "visible";
+            } else {
+                alert("You do not have enough materials to do this action.");
+            }
+}
 function smelt_gold() {
-    wood_fuel--;
-    document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
-    smelted_gold++;
+    if (gold_gathered >= 1 && wood_fuel >= 1) {
+        gold_gathered--;
+        wood_fuel--;
+        document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+        smelted_gold++;
+        document.getElementById("smelted-gold").innerText = "Smelted Gold: " + smelted_gold;
+    } else {
+        alert("You do not have enough materials to do this action.");
+    }
 }
 
 function smelt_iron() {
-    wood_fuel--;
-    document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
-    smelted_iron++;
+    if (iron_gathered >= 1 && wood_fuel >= 1) {
+        iron_gathered--;
+        wood_fuel--;
+        document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+        smelted_iron++;
+        document.getElementById("smelted-iron").innerText = "Smelted Iron: " + smelted_iron;
+    } else {
+        alert("You do not have enough materials to do this action.");
+    }
 }
+
+function smelt_gravel() {
+    if (gravel_gathered >= 1 && wood_fuel >= 1) {
+        gravel_gathered--;
+        wood_fuel--;
+        document.getElementById("wood_fuel_counter").innerText = "Wood Fuel: " + wood_fuel;
+        smelted_gravel++;
+        document.getElementById("smelted-gravel").innerText = "Smelted Gravel: " + smelted_gravel;
+    } else {
+        alert("You do not have enough materials to do this action.");
+    }
+}
+
+function closefurnace2() {
+    document.getElementById("furnace_div").style.display = "none";
+    document.getElementById("overlay4").style.display = "none";
+    document.getElementById("overlay3").style.display = "none";
+    document.getElementById("overlay2").style.display = "none";
+    document.getElementById("overlay1").style.display = "none";
+}
+//liiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiinneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

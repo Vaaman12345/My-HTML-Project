@@ -1,3 +1,4 @@
+
 .overlay {
     position: fixed;
     top: 0;
@@ -27,7 +28,7 @@
 
 #big_mountain {
     position: absolute;
-    top: 247px;
+    top: 415px;
     left: -25px;
     z-index: 10;
 }
@@ -39,21 +40,21 @@
 
 #leaf1 {
     position: absolute;
-    top: 363px;
+    top: 526px;
     left: 58px;
     z-index: 10;
 }
 
 #leaf2 {
     position: absolute;
-    top: 353px;
+    top: 518px;
     left: 64px;
     z-index: 10;
 }
 
 #leaf3 {
     position: absolute;
-    top: 343px;
+    top: 510px;
     left: 69px;
     z-index: 10;
 }
@@ -61,21 +62,21 @@
 
 #leaf4 {
     position: absolute;
-    top: 363px;
+    top: 526px;
     left: 167px;
     z-index: 10;
 }
 
 #leaf5 {
     position: absolute;
-    top: 353px;
+    top: 518px;
     left: 172px;
     z-index: 10;
 }
 
 #leaf6 {
     position: absolute;
-    top: 343px;
+    top: 510px;
     left: 177px;
     z-index: 10;
 }
@@ -83,21 +84,54 @@
 
 #leaf7 {
     position: absolute;
-    top: 363px;
+    top: 526px;
     left: 112px;
     z-index: 10;
 }
 
 #leaf8 {
     position: absolute;
-    top: 353px;
+    top: 518px;
     left: 117px;
     z-index: 10;
 }
 
 #leaf9 {
     position: absolute;
-    top: 343px;
+    top: 510px;
     left: 122px;
     z-index: 10;
+}
+
+#everything {
+    height: 1000px;
+    width: 1425px;
+    background-image: linear-gradient(to bottom,
+                #eeff00 0%,
+                #ffff00 1%,
+                #00c1df 15%,
+                #00c1df 59%,
+                #5f4e01 60%,
+                #5f4e01 100%);
+}
+
+.dial {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ddd;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.knob {
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    /* starting position */
 }
